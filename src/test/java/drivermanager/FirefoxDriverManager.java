@@ -11,5 +11,4 @@ public class FirefoxDriverManager extends DriverManager {
     FirefoxOptions options = new FirefoxOptions();
     threadLocalDriver.set(new FirefoxDriver(options));
   }
-
 }

@@ -4,20 +4,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.OnlineReplenishmentWithoutCommission;
 
-public class CheckBlockNameTest extends BaseWithThreadLocalTest {
+public class LogoViewBelcardTest extends BaseWithThreadLocalTest {
 
-  @Test(priority = 1)
-
-  public void checkBlockName() {
+  @Test
+  public void isLogoBelcard() {
     OnlineReplenishmentWithoutCommission onlineReplenishmentWithoutCommission = new OnlineReplenishmentWithoutCommission(
         driverManager.getDriver());
     onlineReplenishmentWithoutCommission.openPage();
     onlineReplenishmentWithoutCommission.canceledCookies();
-
-    Assert.assertEquals(onlineReplenishmentWithoutCommission.checkBlockName(),
-        "Онлайн пополнение\n"
-            + "без комиссии");
-
-
+    Assert.assertFalse(onlineReplenishmentWithoutCommission.isVisiablelogoBelcard());
   }
 }

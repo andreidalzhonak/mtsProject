@@ -4,20 +4,16 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.OnlineReplenishmentWithoutCommission;
 
-public class CheckBlockNameTest extends BaseWithThreadLocalTest {
+public class AddDataTest extends BaseWithThreadLocalTest {
 
-  @Test(priority = 1)
-
-  public void checkBlockName() {
+  @Test
+  public void inputData() {
     OnlineReplenishmentWithoutCommission onlineReplenishmentWithoutCommission = new OnlineReplenishmentWithoutCommission(
         driverManager.getDriver());
     onlineReplenishmentWithoutCommission.openPage();
     onlineReplenishmentWithoutCommission.canceledCookies();
-
-    Assert.assertEquals(onlineReplenishmentWithoutCommission.checkBlockName(),
-        "Онлайн пополнение\n"
-            + "без комиссии");
-
-
+    onlineReplenishmentWithoutCommission.addInformationInField();
+    Assert.assertEquals(onlineReplenishmentWithoutCommission.getTextNumber(),
+        "Оплата: Услуги связи Номер:375297777777");
   }
 }

@@ -18,11 +18,10 @@ public abstract class DriverManager {
   }
 
   public void setTimeout() {
-    threadLocalDriver.get().manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+    threadLocalDriver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
   public void quitDriver() {
     getDriver().quit();
   }
-
 }
