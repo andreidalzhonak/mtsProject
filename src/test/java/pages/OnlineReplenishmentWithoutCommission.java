@@ -43,19 +43,57 @@ public class OnlineReplenishmentWithoutCommission extends BasePage {
   private WebElement logoMir;
 
   @FindBy(id = "connection-phone")
-  private WebElement phoneNumber;
+  private WebElement phoneNumberConnectionPlaceholder;
 
   @FindBy(id = "connection-sum")
-  private WebElement sum;
+  private WebElement sumConnectionPlaceholder;
 
   @FindBy(id = "connection-email")
-  private WebElement email;
+  private WebElement emailConnectionPlaceholder;
 
   @FindBy(css = "#pay-connection > button")
   private WebElement buttonContinue;
 
   @FindBy(xpath = "//p[contains(@class, 'header__payment-info')]")
   private WebElement textArea;
+  @FindBy(id = "internet-phone")
+  private WebElement phoneNumberInternetPlaceholder;
+
+  @FindBy(id = "internet-sum")
+  private WebElement sumInternetPlaceholder;
+
+  @FindBy(id = "internet-email")
+  private WebElement emailInternetPlaceholder;
+
+  @FindBy(id = "score-instalment")
+  private WebElement scoreInstalmentPlaceholder;
+
+  @FindBy(id = "instalment-sum")
+  private WebElement sumInstalmentPlaceholder;
+
+  @FindBy(id = "instalment-email")
+  private WebElement emailInstalmentPlaceholder;
+
+  @FindBy(id = "score-arrears")
+  private WebElement scoreArrearsPlaceholder;
+
+  @FindBy(id = "arrears-sum")
+  private WebElement sumArrearsPlaceholderr;
+
+  @FindBy(id = "arrears-email")
+  private WebElement emailArrearsPlaceholder;
+
+  @FindBy(xpath = "//div[contains(@class, 'pay__form')]//p[contains(text(), 'Домашний интернет')]")
+  private WebElement homeInternetPaymentList;
+
+  @FindBy(xpath = "//div[contains(@class, 'pay__form')]//p[contains(text(), 'Рассрочка')]")
+  private WebElement instalmentPaymentList;
+
+  @FindBy(xpath = "//div[contains(@class, 'pay__form')]//p[contains(text(), 'Задолженность')]")
+  private WebElement arrearsPaymentList;
+
+  @FindBy(xpath = "//div[contains(@class, 'pay__form')]//span[2]")
+  private WebElement paymentList;
 
 
   public void openPage() {
@@ -106,9 +144,10 @@ public class OnlineReplenishmentWithoutCommission extends BasePage {
   }
 
   public void addInformationInField() {
-    phoneNumber.sendKeys("297777777");
-    sum.sendKeys(PrepareAddInformationForPayments.addInformationData().getSum());
-    email.sendKeys(PrepareAddInformationForPayments.addInformationData().getEmail());
+    phoneNumberConnectionPlaceholder.sendKeys("297777777");
+    sumConnectionPlaceholder.sendKeys("5");
+    emailConnectionPlaceholder.sendKeys(
+        PrepareAddInformationForPayments.addInformationData().getEmail());
     buttonContinue.click();
   }
 
@@ -119,5 +158,69 @@ public class OnlineReplenishmentWithoutCommission extends BasePage {
     String text = textArea.getText();
     return text;
   }
+
+  public String phoneNumberCommunicationService() {
+    return phoneNumberConnectionPlaceholder.getAttribute("placeholder");
+  }
+
+  public String sumCommunicationService() {
+    return sumConnectionPlaceholder.getAttribute("placeholder");
+  }
+
+  public String emailCommunicationService() {
+    return emailConnectionPlaceholder.getAttribute("placeholder");
+  }
+
+  public void choiseHomeInternet() {
+    paymentList.click();
+    homeInternetPaymentList.click();
+  }
+
+  public String phoneNumberHomeInternet() {
+    return phoneNumberInternetPlaceholder.getAttribute("placeholder");
+  }
+
+  public String sumHomeInternet() {
+    return sumInternetPlaceholder.getAttribute("placeholder");
+  }
+
+  public String emailHomeInternet() {
+    return emailInternetPlaceholder.getAttribute("placeholder");
+  }
+
+  public String scoreInstalment() {
+    return scoreInstalmentPlaceholder.getAttribute("placeholder");
+  }
+
+  public String sumInstalment() {
+    return sumInstalmentPlaceholder.getAttribute("placeholder");
+  }
+
+  public String emailInstalment() {
+    return emailInstalmentPlaceholder.getAttribute("placeholder");
+  }
+
+  public void choiseInstalment() {
+    paymentList.click();
+    instalmentPaymentList.click();
+  }
+
+  public void choiseArrears() {
+    paymentList.click();
+    arrearsPaymentList.click();
+  }
+
+  public String scoreArrears() {
+    return scoreArrearsPlaceholder.getAttribute("placeholder");
+  }
+
+  public String sumArrears() {
+    return sumArrearsPlaceholderr.getAttribute("placeholder");
+  }
+
+  public String emailArrears() {
+    return emailArrearsPlaceholder.getAttribute("placeholder");
+  }
+
 }
 
